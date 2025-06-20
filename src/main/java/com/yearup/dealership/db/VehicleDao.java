@@ -15,7 +15,26 @@ public class VehicleDao {
     }
 
     public void addVehicle(Vehicle vehicle) {
-        // TODO: Implement the logic to add a vehicle
+        String sql = "INSERT INTO vehicles (VIN, make, model, year, SOLD, color, vehicleType, odometer, price) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, vehicle.getVin());
+            stmt.setString(2, vehicle.getMake());
+            stmt.setString(3, vehicle.getModel());
+            stmt.setInt(4, vehicle.getYear());
+            stmt.setBoolean(5, vehicle.isSold());
+            stmt.setString(6, vehicle.getColor());
+            stmt.setString(7, vehicle.getVehicleType());
+            stmt.setInt(8, vehicle.getOdometer());
+            stmt.setDouble(9, vehicle.getPrice());
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error adding vehicle: " + e.getMessage());
+        }
     }
 
     public void removeVehicle(String VIN) {

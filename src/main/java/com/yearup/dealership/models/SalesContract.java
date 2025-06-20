@@ -1,27 +1,20 @@
 package com.yearup.dealership.models;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class SalesContract {
     private int contractId;
     private String vin;
     private LocalDate saleDate;
-    private BigDecimal price;
+    private double price;
 
-    // Default constructor
-    public SalesContract() {
-    }
-
-    // Constructor
-    public SalesContract(String vin, LocalDate saleDate, BigDecimal price) {
+    public SalesContract(String vin, LocalDate saleDate, double price) {
         this.vin = vin;
         this.saleDate = saleDate;
         this.price = price;
     }
 
-    // Full constructor 
-    public SalesContract(int contractId, String vin, LocalDate saleDate, BigDecimal price) {
+    public SalesContract(int contractId, String vin, LocalDate saleDate, double price) {
         this.contractId = contractId;
         this.vin = vin;
         this.saleDate = saleDate;
@@ -52,11 +45,11 @@ public class SalesContract {
         this.saleDate = saleDate;
     }
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

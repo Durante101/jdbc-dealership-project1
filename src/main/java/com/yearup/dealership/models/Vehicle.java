@@ -10,10 +10,10 @@ public class Vehicle {
     private String vehicleType;
     private int odometer;
     private double price;
-    // Default Constructor
+
     public Vehicle() {
     }
-    // Constructor
+
     public Vehicle(String vin, String make, String model, int year, boolean sold, String color, String vehicleType, int odometer, double price) {
         this.vin = vin;
         this.make = make;
@@ -25,7 +25,7 @@ public class Vehicle {
         this.odometer = odometer;
         this.price = price;
     }
-    // Getters and Setters
+
     public String getVin() {
         return vin;
     }
