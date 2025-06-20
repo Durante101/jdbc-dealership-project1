@@ -163,8 +163,24 @@ public class VehicleDao {
 
 
     public List<Vehicle> searchByType(String type) {
-        // TODO: Implement the logic to search vehicles by type
-        return new ArrayList<>();
+        String sql = "SELECT * FROM vehicles WHERE vehicleType = ?";
+        List<Vehicle> vehicles = new ArrayList<>();
+
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, type);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                vehicles.add(createVehicleFromResultSet(rs));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error searching by type: " + e.getMessage());
+        }
+
+        return vehicles;
     }
 
     private Vehicle createVehicleFromResultSet(ResultSet resultSet) throws SQLException {
