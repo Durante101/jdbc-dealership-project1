@@ -10,14 +10,11 @@ public class Vehicle {
     private String vehicleType;
     private int odometer;
     private double price;
-
-    // Default constructor (for frameworks or blank creation)
+    // Default Constructor
     public Vehicle() {
     }
-
-    // Full constructor
-    public Vehicle(String vin, String make, String model, int year, boolean sold,
-                   String color, String vehicleType, int odometer, double price) {
+    // Constructor
+    public Vehicle(String vin, String make, String model, int year, boolean sold, String color, String vehicleType, int odometer, double price) {
         this.vin = vin;
         this.make = make;
         this.model = model;
@@ -28,7 +25,6 @@ public class Vehicle {
         this.odometer = odometer;
         this.price = price;
     }
-
     // Getters and Setters
     public String getVin() {
         return vin;
@@ -102,7 +98,6 @@ public class Vehicle {
         this.price = price;
     }
 
-    // toString (useful for printing/debugging)
     @Override
     public String toString() {
         return "Vehicle{" +
