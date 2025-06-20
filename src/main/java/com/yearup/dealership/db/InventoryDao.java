@@ -28,6 +28,15 @@ public class InventoryDao {
     }
 
     public void removeVehicleFromInventory(String vin) {
-        // TODO: Implement the logic to remove a vehicle from the inventory
+        String sql = "DELETE FROM inventory WHERE VIN = ?";
+
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, vin);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error removing vehicle from inventory: " + e.getMessage());
+        }
     }
 }
